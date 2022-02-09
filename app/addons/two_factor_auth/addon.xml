@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<addon scheme="3.0">
+    <id>two_factor_auth</id>
+    <version>1.0</version>
+    <priority>1200</priority>
+    <position>10</position>
+    <status>active</status>
+    <has_icon>Y</has_icon>
+    <supplier>Simtech Development</supplier>
+    <supplier_link>https://www.simtechdev.com</supplier_link>
+    <authors>
+        <author>
+            <name>Simtech Development</name>
+            <email>sales@simtechdev.com</email>
+            <url>http://www.simtechdev.com</url>
+        </author>
+    </authors>
+    <compatibility>
+        <core_version>
+            <min>4.14.1</min>
+        </core_version>
+        <php_version>
+            <min>7.1.0</min>
+        </php_version>
+        <core_edition>MULTIVENDOR,ULTIMATE</core_edition>
+    </compatibility>
+    <queries>
+        <item for="install">
+            ALTER TABLE `?:users` ADD `two_factor_code` VARCHAR(5) NULL AFTER `janrain_identifier`;
+        </item>
+        <item for="install">
+            ALTER TABLE `?:users` ADD `two_factor_expires_at` DATE NULL AFTER `janrain_identifier`;
+        </item>
+        <item for="uninstall">ALTER TABLE `?:users` DROP `two_factor_code`;</item>
+        <item for="uninstall">ALTER TABLE `?:users` DROP `two_factor_expires_at`;</item>
+    </queries>
+</addon>
