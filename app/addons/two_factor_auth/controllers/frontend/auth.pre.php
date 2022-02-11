@@ -6,7 +6,7 @@ use Tygh\Registry;
 defined('BOOTSTRAP') or die('Access denied');
 
 $redirect_url = 'auth.verification_form';
-$auth = &Tygh::$app['session']['auth'];
+$auth = Tygh::$app['session']['auth'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($mode === 'login') {

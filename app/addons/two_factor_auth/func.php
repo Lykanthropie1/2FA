@@ -7,8 +7,10 @@
 function fn_set_secret($user_id)
 {
     $secret = fn_random_secret(5);
+    $timestamp = fn_parse_date(TIME);
     $data = array(
-        'two_factor_code' => $secret
+        'two_factor_code' => $secret,
+        'two_factor_expires_at' => $timestamp
     );
     db_query("UPDATE ?:users SET ?u WHERE user_id = ?i", $data, $user_id);
 

@@ -29,7 +29,7 @@
             ALTER TABLE `?:users` ADD `two_factor_code` VARCHAR(5) NULL AFTER `janrain_identifier`;
         </item>
         <item for="install">
-            ALTER TABLE `?:users` ADD `two_factor_expires_at` DATE NULL AFTER `janrain_identifier`;
+            ALTER TABLE `?:users` ADD `two_factor_expires_at` INT(11) NULL AFTER `janrain_identifier`;
         </item>
         <item for="uninstall">ALTER TABLE `?:users` DROP `two_factor_code`;</item>
         <item for="uninstall">ALTER TABLE `?:users` DROP `two_factor_expires_at`;</item>
