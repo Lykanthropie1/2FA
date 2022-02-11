@@ -1,0 +1,29 @@
+msgid ""
+msgstr "Project-Id-Version: tygh\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language-Team: English\n"
+"Language: en_US"
+
+msgctxt "Addons::name::two_factor_auth"
+msgid "Two Factor Auth"
+msgstr "Two Factor Auth"
+
+msgctxt "Addons::description::two_factor_auth"
+msgid "Adds two-factor authorization functionality"
+msgstr "Adds two-factor authorization functionality"
+
+msgctxt "Languages::enter_secret_code"
+msgid "Enter the secret code that was sent to your email"
+msgstr "Enter the secret code that was sent to your email"
+
+msgctxt "Languages::error_incorrect_secret"
+msgid "Incorrect secret code"
+msgstr "Incorrect secret code"
+
+msgctxt "Languages::code_refreshed"
+msgid "Code is refreshed"
+msgstr "Code is refreshed"
+
+msgctxt "Languages::re_login"
+msgid "Please log in again"
+msgstr "Please log in again"
