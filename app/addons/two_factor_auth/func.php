@@ -9,6 +9,10 @@ use Tygh\Registry;
 function fn_set_secret($user_id)
 {
     $secret = fn_random_secret(5);
+    $data = array (
+        'two_factor_code' => $secret
+    );
+    db_query("UPDATE ?:users SET ?u WHERE user_id = ?i", $data, $user_id);
 
     return $secret;
 }
@@ -26,4 +30,38 @@ function fn_random_secret($length)
         $res .= $arr[rand(0, count($arr) - 1)];
     }
     return $res;
+}
+
+function fn_send_secret($to, $secret, $lang_code = CART_LANGUAGE)
+{
+    $body = 'Your verification code: '. $secret;
+    $subj = 'Your verification code';
+    $_from = array(
+        'email' => !empty($from['from_email']) ? $from['from_email'] : 'default_company_newsletter_email',
+        'name' => !empty($from['from_name']) ? $from['from_name'] : (empty($from['from_email']) ? 'default_company_name' : '')
+    );
+
+    /** @var \Tygh\Mailer\Mailer $mailer */
+    $mailer = Tygh::$app['mailer'];
+
+    return $mailer->send(array(
+        'to' => $to,
+        'from' => $_from,
+        'data' => array(
+            'body' => $body,
+            'subject' => $subj
+        ),
+        'template_code' => 'newsletters_newsletter',
+        'tpl' => 'addons/newsletters/newsletter.tpl', // this parameter is obsolete and is used for back compatibility
+    ), 'C', $lang_code, fn_get_newsletters_mailer_settings());
+}
+
+function fn_verify_secret ($secret, $user_id) {
+    if (!empty($secret)) {
+        $db_secret = db_get_field('SELECT two_factor_code FROM ?:users WHERE user_id = ?i', $user_id);
+        if($secret === $db_secret) {
+            return true;
+        }
+    }
+    return false;
 }
