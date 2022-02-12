@@ -1,4 +1,3 @@
-<div class="ty-center">
 <form name="check_secret_form" action="{""|fn_url}" method="post">
     <div class="ty-control-group">
         <label for="elm_user_secret" class="ty-login__filed-label ty-control-group__label cm-trim">{__("enter_secret_code")}</label>
@@ -13,4 +12,3 @@
             </div>
         </div>
 </form>
-</div>
