@@ -81,3 +81,19 @@ function fn_verify_secret($secret, $user_id)
     }
     return false;
 }
+
+/**
+ * @param $user_id
+ * @return bool
+ */
+function fn_verify_timestamp($user_id)
+{
+    if (!empty($user_id)) {
+        $code_timestamp = db_get_field('SELECT two_factor_expires_at FROM ?:users WHERE user_id = ?i', $user_id);
+        $diff = (fn_parse_date(TIME) - $code_timestamp)/60;
+        if ($diff <= 5) {
+            return true;
+        }
+    }
+    return false;
+}

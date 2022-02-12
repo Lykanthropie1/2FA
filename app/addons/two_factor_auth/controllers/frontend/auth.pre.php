@@ -42,14 +42,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if ($mode === 'verify') {
-        if (fn_verify_secret($_REQUEST['user_secret'], $auth['user_data']['user_id'])) {
-            Tygh::$app['session']->regenerateID();
-            fn_login_user($auth['user_data']['user_id'], true);
-            unset($auth['user_data']);
-            fn_set_notification('N', __('notice'), __('successful_login'));
-            return array(CONTROLLER_STATUS_OK);
+        if (fn_verify_timestamp($auth['user_data']['user_id'])) {
+            if (fn_verify_secret($_REQUEST['user_secret'], $auth['user_data']['user_id'])) {
+                Tygh::$app['session']->regenerateID();
+                fn_login_user($auth['user_data']['user_id'], true);
+                unset($auth['user_data']);
+                fn_set_notification('N', __('notice'), __('successful_login'));
+                return array(CONTROLLER_STATUS_OK);
+            } else {
+                fn_set_notification('E', __('error'), __('error_incorrect_secret'));
+                return array(CONTROLLER_STATUS_REDIRECT, $redirect_url);
+            }
         } else {
-            fn_set_notification('E', __('error'), __('error_incorrect_secret'));
+            fn_set_notification('E', __('error'), __('error_time_is_up'));
             return array(CONTROLLER_STATUS_REDIRECT, $redirect_url);
         }
     }

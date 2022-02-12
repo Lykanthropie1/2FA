@@ -32,6 +32,10 @@ msgctxt "Languages::code_refreshed"
 msgid "Code is refreshed"
 msgstr "Код отправлен заново"
 
+msgctxt "Languages::error_time_is_up"
+msgid "Time is up, update the code"
+msgstr "Время вышло, обновите код"
+
 msgctxt "Languages::re_login"
 msgid "Please log in again"
 msgstr "Перелогиньтесь, пожалуйста"
