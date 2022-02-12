@@ -30,4 +30,4 @@ msgstr "Please log in again"
 
 msgctxt "Languages::error_time_is_up"
 msgid "Time is up, update the code"
-msgstr "Time is up, update the code"
+msgstr "Time is up, update the code or relogin"

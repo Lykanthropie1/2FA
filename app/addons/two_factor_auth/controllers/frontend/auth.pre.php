@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             fn_set_notification('N', __('notice'), __('code_refreshed'));
             return array(CONTROLLER_STATUS_REDIRECT, $redirect_url);
         } else {
-            unset($auth['user_data']['count']);
+            unset($auth['user_data']);
             fn_set_notification('N', __('notice'), __('re_login'));
             return array(CONTROLLER_STATUS_REDIRECT, 'auth.login_form');
         }

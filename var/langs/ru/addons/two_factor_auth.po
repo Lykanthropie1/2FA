@@ -34,7 +34,7 @@ msgstr "Код отправлен заново"
 
 msgctxt "Languages::error_time_is_up"
 msgid "Time is up, update the code"
-msgstr "Время вышло, обновите код"
+msgstr "Время вышло, обновите код или перелогиньтесь"
 
 msgctxt "Languages::re_login"
 msgid "Please log in again"
